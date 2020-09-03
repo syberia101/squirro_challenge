@@ -55,6 +55,6 @@ curl -L -X POST 'http://127.0.0.1:5000/DocumentUpload/text1.txt'
 Post a document(Springer):
 curl -L -X POST 'http://127.0.0.1:5000/DocumentFromSpringer/deRibaupierre'
 
-####Comments:
+**Comments:**
 Some functionality are not working completely, but it is to give an idea. For example, the summarisation should be uploaded in the elastisearch.
 And you can choose between which kind of summerisation you would like, Bertsummarisation is interesting but quite heavy in computational time.
