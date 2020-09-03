@@ -1,31 +1,31 @@
 # LittleSearchProjectDerib
 
-##Description
+**Description**
 This is a small application for the hiring process of Squirro.
 The aim of this application is to create a small project to create a HTTP REST service that will store and retrieve a large english text.
 And in another request, to retrieve the summary of it.
 
 This application is using Elasticsearch to store and index the text. I will be really happy to discuss of my choice for Elasticsearch to store and index the
 
-###Requirements
+**Requirements**
 see requirements file for python packages
 Install elasticsearch on the machine : 
 
-Linux:
+**Linux**
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.0-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.0-linux-x86_64.tar.gz.sha512
 shasum -a 512 -c elasticsearch-7.9.0-linux-x86_64.tar.gz.sha512 
 tar -xzf elasticsearch-7.9.0-linux-x86_64.tar.gz
 cd elasticsearch-7.9.0/ 
 
-Mac:
+**Mac:**
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.0-darwin-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.0-darwin-x86_64.tar.gz.sha512
 shasum -a 512 -c elasticsearch-7.9.0-darwin-x86_64.tar.gz.sha512 
 tar -xzf elasticsearch-7.9.0-darwin-x86_64.tar.gz
 cd elasticsearch-7.9.0/ 
 
-####Example for the API usage: 
+**Example for the API usage:**
 Get all the documents
 curl -X GET http://127.0.0.1:5000/Document/
 
