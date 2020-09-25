@@ -36,6 +36,13 @@ tar -xzf elasticsearch-7.9.0-darwin-x86_64.tar.gz
 
 cd elasticsearch-7.9.0/ 
 
+to run elasticsearch: ./elasticsearch
+
+**To run the application**
+Install the requirement from requirement.txt
+
+run: python api_flask_rest.py 
+
 **Example for the API usage:**
 Get all the documents
 curl -X GET http://127.0.0.1:5000/Document/

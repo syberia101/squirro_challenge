@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 import random
 from elasticsearch import Elasticsearch
-from apiSearch.searchandstore import documentGetter
+import documentGetter
 
 
 # connect to elastisearch
@@ -140,6 +140,7 @@ def return_id_formated(results):
         print('text: ', doc['_source']['text'])
         all_id.append(doc_id)
     return all_id
+
 
 
 def update_document(id,summary):

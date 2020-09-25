@@ -1,9 +1,9 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
-import apiSearch.searchandstore.elasticSearchPy as ela
-import apiSearch.summarise.summariseApi as summ
+import elasticSearchPy as ela
+import summariseApi as summ
 import os
-import apiSearch.summarise.SummarisationBert as summBert
+import SummarisationBert as summBert
 
 app = Flask(__name__)
 api = Api(app)
@@ -34,18 +34,16 @@ class DocumentFromId(Resource):
 
 
 class DocumentUploadFromFile(Resource):
-
     def post(self, fname):
         """Post a document from a file, should be a text file with attribute title first line, text second line, will be indexed in the elastisearch server"""
         f = open(os.path.join(UD, fname))
         title = f.readlines(1)
         text = f.readlines(2)
         ela.index_a_document(title, text)
-        return {'title': title, 'text': text}, 201
+        return {'title': title, 'text': text}, 201 if title else 404
 
 
 class DocumentUploadFromSpringer(Resource):
-
     def post(self, keyword):
         """Post a document from a document springer, with the title and abstract, will be indexed in the elastisearch server"""
         out = ela.index_document_from_springer(keyword)
@@ -63,8 +61,9 @@ class DocumentSummarisation(Resource):
     def get(self, id):
         """get summarisation from document id"""
         document = ela.search_document_by_id(id)
-        #summary = summ.summarisation_document(document)
-        summary = summBert.summarise(document)
+        data = document['hits']['hits'][0]['_source']['text']
+        #summary = summ.summarisation_document(data)
+        summary = summBert.summarise(data)
         return {'summary': summary}, 200 if summary else 404
 
 
